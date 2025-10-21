@@ -3,7 +3,8 @@ import Layout from "../Layout/Layout";
 import Home from "../Pages/Home";
 import Plants from "../Pages/Plants";
 import MyProfile from "../Pages/MyProfile";
-import Eroor from "../Pages/Eroor";
+import Login from "../Pages/Login";
+import Signup from "../Pages/Signup"; 
 
 export const router = createBrowserRouter([
   {
@@ -19,13 +20,17 @@ export const router = createBrowserRouter([
         element: <Plants />
       },
       {
-        path: 'myprofile', 
+        path: 'myprofile',
         element: <MyProfile />
       },
       {
-        path: '*', 
-        element: <Eroor />
+        path: 'login',
+        element: <Login />
       },
+      {
+        path: 'signup', 
+        element: <Signup />
+      }
     ]
   },
 ]);
