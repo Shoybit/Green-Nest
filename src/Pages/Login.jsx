@@ -94,7 +94,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email address"
-                                className="input input-bordered w-full text-gray-400"
+                                className="input input-bordered w-full "
                                 required
                             />
                         </div>
@@ -104,7 +104,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
-                                className="input input-bordered w-full pr-10 text-gray-400"
+                                className="input input-bordered w-full pr-10 "
                                 required
                             />
                             <button

@@ -84,7 +84,7 @@ const Signup = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter your full name"
-                            className="input input-bordered w-full mt-1 text-gray-400"
+                            className="input input-bordered w-full mt-1 "
                             required
                         />
                     </div>
@@ -100,7 +100,7 @@ const Signup = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="input input-bordered w-full mt-1 text-gray-400"
+                            className="input input-bordered w-full mt-1 "
                             required
                         />
                     </div>
@@ -116,7 +116,7 @@ const Signup = () => {
                             value={photoURL}
                             onChange={(e) => setPhotoURL(e.target.value)}
                             placeholder="https://example.com/photo.jpg"
-                            className="input input-bordered w-full mt-1 text-gray-400"
+                            className="input input-bordered w-full mt-1"
                         />
                     </div>
 
@@ -132,7 +132,7 @@ const Signup = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Create a password"
-                                className="input input-bordered w-full mt-1 pr-10 text-gray-400"
+                                className="input input-bordered w-full mt-1 pr-10 "
                                 required
                             />
                             <button
@@ -141,9 +141,9 @@ const Signup = () => {
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? (
-                                    <FaEyeSlash className="h-5 w-5 text-gray-400" />
+                                    <FaEyeSlash className="h-5 w-5 " />
                                 ) : (
-                                    <FaEye className="h-5 w-5 text-gray-400" />
+                                    <FaEye className="h-5 w-5" />
                                 )}
                             </button>
                         </div>

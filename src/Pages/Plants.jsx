@@ -1,9 +1,40 @@
 import React from 'react';
+import { useLoaderData } from 'react-router';
+import Card from '../Components/Card';
 
 const Plants = () => {
+    const data = useLoaderData();
+    console.log('Loaded data:', data);
+
     return (
-        <div>
-            Plants
+        <div className="min-h-screen bg-gray-50 py-8">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl font-bold text-gray-800 mb-4">
+                        All Plants Collection
+                    </h1>
+                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                        Explore our complete collection of beautiful plants
+                    </p>
+                </div>
+                    <div className="mt-4 text-xl font-semibold mb-12">
+                        Total Plants: ({data?.length || 0})
+                    </div>
+
+                {data && Array.isArray(data) ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        {data.map((item) => (
+                            item && item.image ? (
+                                <Card key={item.plantId} item={item} />
+                            ) : null
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-12">
+                        <p className="text-gray-500 text-lg">No plants data available</p>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

@@ -14,11 +14,14 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
+        loader: ()=> fetch('../Plant.data.json')
+        
       },
       {
         path: 'plants',
-        element: <Plants />
+        element: <Plants />,
+         loader: ()=> fetch('../Plant.data.json')
       },
       {
         path: 'myprofile',
