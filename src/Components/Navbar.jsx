@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/firebase.config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import ActiveLink from './ActiveLink'; 
@@ -10,7 +10,7 @@ const Navbar = () => {
     const [loading, setLoading] = useState(true);
 
     
-    React.useEffect(() => {
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
             setLoading(false);
@@ -70,16 +70,16 @@ const Navbar = () => {
                         </ul>
                     </div>
                     
-                    <ActiveLink to="/" className="flex items-center space-x-1 ml-1">
-                        <div className="w-6 h-6 rounded-full flex items-center justify-center"> 
+                    <Link to="/" className="flex items-center space-x-1 ml-1">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center"> 
                             <img 
                                 src="/green_nest_packaging_solutions_logo-depositphotos-bgremover.png" 
                                 alt="GreenNest Logo" 
-                                className="w-6 h-6 object-contain"
+                                className="w-10 h-10 object-contain"
                             />
                         </div>
-                        <span className="text-lg font-semibold text-green-600">GreenNest</span>
-                    </ActiveLink>
+                        <span className="text-2xl font-semibold text-green-600">GreenNest</span>
+                    </Link>
                 </div>
 
                 
