@@ -84,7 +84,7 @@ const Signup = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter your full name"
-                            className="input input-bordered w-full mt-1"
+                            className="input input-bordered w-full mt-1 text-gray-400"
                             required
                         />
                     </div>
@@ -100,8 +100,23 @@ const Signup = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="input input-bordered w-full mt-1"
+                            className="input input-bordered w-full mt-1 text-gray-400"
                             required
+                        />
+                    </div>
+
+                                        <div>
+                        <label htmlFor="photoURL" className="block text-sm font-medium text-gray-700">
+                            Profile Photo URL 
+                        </label>
+                        <input
+                            id="photoURL"
+                            name="photoURL"
+                            type="url"
+                            value={photoURL}
+                            onChange={(e) => setPhotoURL(e.target.value)}
+                            placeholder="https://example.com/photo.jpg"
+                            className="input input-bordered w-full mt-1 text-gray-400"
                         />
                     </div>
 
@@ -117,7 +132,7 @@ const Signup = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Create a password"
-                                className="input input-bordered w-full mt-1 pr-10"
+                                className="input input-bordered w-full mt-1 pr-10 text-gray-400"
                                 required
                             />
                             <button
@@ -138,26 +153,11 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="photoURL" className="block text-sm font-medium text-gray-700">
-                            Profile Photo URL (Optional)
-                        </label>
-                        <input
-                            id="photoURL"
-                            name="photoURL"
-                            type="url"
-                            value={photoURL}
-                            onChange={(e) => setPhotoURL(e.target.value)}
-                            placeholder="https://example.com/photo.jpg"
-                            className="input input-bordered w-full mt-1 text-gray-400"
-                        />
-                    </div>
-
-                    <div>
                         <button
                             type="submit"
                             className="btn btn-primary w-full bg-green-600 hover:bg-green-700 border-green-600"
                         >  
-                             Create Account
+                              Register
                         </button>
                     </div>
 

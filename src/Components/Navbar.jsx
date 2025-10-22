@@ -40,7 +40,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 shadow-sm w-full h-25 min-h-0 sticky top-0 z-50"> 
+        <div className="navbar bg-base-100 shadow-sm w-full h-25 min-h-0 "> 
             <div className="container mx-auto px-4">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -63,7 +63,7 @@ const Navbar = () => {
                             {user && (
                                 <li>
                                     <ActiveLink to="/myprofile">
-                                        Profile
+                                       My Profile
                                     </ActiveLink>
                                 </li>
                             )}
@@ -99,7 +99,7 @@ const Navbar = () => {
                             {user && (
                                 <li>
                                     <ActiveLink to="/myprofile" className="py-1 px-2 text-sm">
-                                        Profile
+                                        My Profile
                                     </ActiveLink>
                                 </li>
                             )}
@@ -137,7 +137,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-2 w-40 p-2 shadow">
-                                        <li className="px-2 py-1 border-b border-gray-200">
+                                        <li className="py-1 border-b border-gray-200">
                                             <div className="flex items-center space-x-2">
                                                 <p className="text-sm font-semibold">
                                                     {user.displayName || 'User'}

@@ -5,6 +5,7 @@ import Plants from "../Pages/Plants";
 import MyProfile from "../Pages/MyProfile";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup"; 
+import Footer from "../Components/Footer";
 
 export const router = createBrowserRouter([
   {

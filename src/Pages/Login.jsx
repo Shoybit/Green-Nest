@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { signInWithEmailAndPassword, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -43,7 +45,32 @@ const Login = () => {
             .catch((error) => {
                 setError(error.message);
             })
+
+
+
+            
+            
     };
+
+    const handleGoogleLogin = () => {
+        setError('');
+
+        const provider = new GoogleAuthProvider();
+        
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log('Google login successful:', result.user);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error('Google login error:', error);
+                setError(error.message);
+            })
+            .finally(() => {
+            });
+    };
+
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -67,7 +94,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email address"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-gray-400"
                                 required
                             />
                         </div>
@@ -77,7 +104,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
-                                className="input input-bordered w-full pr-10"
+                                className="input input-bordered w-full pr-10 text-gray-400"
                                 required
                             />
                             <button
@@ -102,6 +129,16 @@ const Login = () => {
                                 Forgot your password
                             </button>
                         </div>
+
+                <div className="mt-4">
+                    <button
+                        onClick={handleGoogleLogin}
+                        className="w-full flex justify-center items-center gap-3 py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+                    >
+                        <FcGoogle className="h-5 w-5 text-red-500" />
+                        Continue with Google
+                    </button>
+                </div>
 
                         <div>
                             <button
@@ -145,7 +182,7 @@ const Login = () => {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Email address"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full "
                                         required
                                     />
                                 </div>
