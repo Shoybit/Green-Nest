@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const Card = ({ item }) => {
     return (
@@ -37,9 +38,11 @@ const Card = ({ item }) => {
                 </div>
                 </div>
                 
-                <button className="w-full bg-[#00a63e] hover:bg-green-700 text-white  py-2 px-4 rounded-lg transition-colors duration-200 font-semibold shadow-md hover:shadow-lg">
+                <Link to={`/card-details/${item.id}`}>
+                   <button className="w-full bg-[#00a63e] hover:bg-green-700 text-white  py-2 px-4 rounded-lg transition-colors duration-200 font-semibold shadow-md hover:shadow-lg">
                     View Details
                 </button>
+                </Link>
             </div>
         </div>
     );

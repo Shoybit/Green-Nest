@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -14,24 +15,24 @@ const Login = () => {
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [resetSent, setResetSent] = useState(false);
     const navigate = useNavigate();
+    
 
     const handleLogin = (e) => {
         e.preventDefault();
         setError('');
-
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 navigate('/');
             })
             .catch((error) => {
-                setError(error.message);
+                toast.error(error.message);
             })
     };
 
     const handleForgotPassword = (e) => {
         e.preventDefault();
         if (!email) {
-            setError('Please enter your email address first');
+            toast.error('Please enter your email address first');
             return;
         }
 
@@ -43,7 +44,7 @@ const Login = () => {
                 setError('');
             })
             .catch((error) => {
-                setError(error.message);
+                toast.error(error.message);
             })
 
 
@@ -59,12 +60,13 @@ const Login = () => {
         
         signInWithPopup(auth, provider)
             .then((result) => {
-                console.log('Google login successful:', result.user);
+                toast.success('Google login successful:', result.user);
+                
                 navigate('/');
             })
             .catch((error) => {
-                console.error('Google login error:', error);
-                setError(error.message);
+                toast.error('Google login error:', error);
+                toast.error(error.message);
             })
             .finally(() => {
             });
