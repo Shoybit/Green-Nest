@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import Slider from '../Components/Slider';
 import Card from '../Components/Card';
+import PlantsTips from '../Components/PlantsTips';
 
 const Home = () => {
     const data = useLoaderData();
@@ -41,15 +42,19 @@ const Home = () => {
                     </div>
                 )}
 
-                   <div className="text-center mt-12">
+                   <div className="text-center mt-12 ">
                     <Link to={'/plants'}>
-                    <button className="text-1xl bg-green-700 text-white rounded-2xl w-[100px] cursor-pointer">
+                    <button className="text-1xl bg-green-600 text-white rounded-2xl w-[100px] h-[50px] hover:bg-green-700 cursor-pointer">
                         All Plants
                     </button>
                     </Link>
                 </div>
+                <div className='border-b-2 mt-5 text-gray-400'>
+
+                </div>
 
             </section>
+            <PlantsTips></PlantsTips>
         </div>
     );
 };

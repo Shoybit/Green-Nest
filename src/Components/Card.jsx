@@ -15,13 +15,8 @@ const Card = ({ item }) => {
                     {item.plantName}
                 </h4>
                 
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm mb-3 font-medium">
-                    {item.category}
-                </span>
+
                 
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
-                    {item.description}
-                </p>
 
                 <div className='flex justify-between items-center mb-4'>
                     <div className='flex items-center'>
@@ -42,7 +37,7 @@ const Card = ({ item }) => {
                 </div>
                 </div>
                 
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-200 font-semibold shadow-md hover:shadow-lg">
+                <button className="w-full bg-[#00a63e] hover:bg-green-700 text-white  py-2 px-4 rounded-lg transition-colors duration-200 font-semibold shadow-md hover:shadow-lg">
                     View Details
                 </button>
             </div>
