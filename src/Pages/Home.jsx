@@ -4,6 +4,7 @@ import Slider from '../Components/Slider';
 import Card from '../Components/Card';
 import PlantsTips from '../Components/PlantsTips';
 import GreenExperts from '../Components/GreenExperts';
+import EcoDecorIdeas from '../Components/EcoDecorIdeas';
 
 const Home = () => {
     const data = useLoaderData();
@@ -57,6 +58,7 @@ const Home = () => {
             </section>
             <PlantsTips></PlantsTips>
             <GreenExperts></GreenExperts>
+            <EcoDecorIdeas></EcoDecorIdeas>
         </div>
     );
 };
