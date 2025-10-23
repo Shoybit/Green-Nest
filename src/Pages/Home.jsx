@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router';
 import Slider from '../Components/Slider';
 import Card from '../Components/Card';
 import PlantsTips from '../Components/PlantsTips';
+import GreenExperts from '../Components/GreenExperts';
 
 const Home = () => {
     const data = useLoaderData();
@@ -16,7 +17,7 @@ const Home = () => {
     console.log('Top rated plants:', topRatedPlants);
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             <Slider />
             
             
@@ -55,6 +56,7 @@ const Home = () => {
 
             </section>
             <PlantsTips></PlantsTips>
+            <GreenExperts></GreenExperts>
         </div>
     );
 };
