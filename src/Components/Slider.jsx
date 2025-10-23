@@ -25,11 +25,18 @@ const Slider = () => {
             className="w-full max-w-9/12 mx-auto mt-7"
         >
             <SwiperSlide className="flex items-center justify-center">
-                <img 
+                <div className='relative'>
+                    <img 
                     src={image1} 
                     alt="Cozy nest atop mountain" 
                     className="w-full h-80 md:h-96 lg:h-[450px] object-cover mx-auto rounded-lg"
                 />
+                </div>
+
+                <div className='absolute z'>
+                    <h1>hlw mother fakar</h1>
+                </div>
+
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center">
                 <img 

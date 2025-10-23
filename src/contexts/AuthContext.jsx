@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config.js"; 
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updateProfile } from "firebase/auth";
 
 const AuthContext = createContext();
 
@@ -16,8 +16,13 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  const updateUserProfile = async (newData) => {
+    if (!auth.currentUser) return;
+    await updateProfile(auth.currentUser, newData);
+    setUser({ ...auth.currentUser });
+  };
 
-  const value = { user, loading};
+  const value = { user, loading, updateUserProfile };
 
   return (
     <AuthContext.Provider value={value}>

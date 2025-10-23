@@ -1,11 +1,122 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 const MyProfile = () => {
-    return (
-        <div>
-            My Profile
+  const { user, updateUserProfile } = useAuth();
+
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [loading, setLoading] = useState(false);
+
+            useEffect(() => {
+            if (user) {
+                setName(user.displayName);
+                setPhoto(user.photoURL);
+            }
+            }, [user]);
+
+            const handleUpdate = async () => {
+            if (!name.trim()) return;
+            
+            setLoading(true);
+            await updateUserProfile({ displayName: name, photoURL: photo });
+            setLoading(false);
+            };
+
+
+
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br py-30 px-4 ">
+      <div className="max-w-4xl mx-auto">
+        
+        <div className="rounded-2xl shadow-xl overflow-hidden transform">
+          <div className="flex flex-col lg:flex-row">
+            
+            <div className="lg:w-2/5 bg-gradient-to-br from-green-600 to-emerald-600 p-8 flex flex-col items-center justify-center text-white">
+              <div className="relative mb-6">
+                <img
+                  src={user.photoURL }
+                  alt="Profile"
+                  className="w-48 h-48 rounded-full border-4 border-white shadow-2xl object-cover"
+                />
+
+              </div>
+              
+              <h2 className="text-2xl font-bold text-center mb-2">{user.displayName}</h2>
+              <p className="text-green-100 text-center">{user.email}</p>
+            </div>
+
+            <div className="lg:w-3/5 p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Profile Information</h3>
+                
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Display Name
+                  </label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                    placeholder="Enter your display name"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2 ">
+                    Email Address
+                  </label>
+                  <div className="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 cursor-not-allowed">
+                    <p className="text-gray-800 font-medium">{user.email}</p>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Email cannot be changed</p>
+                </div>
+
+                <div className="mb-8">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Photo URL
+                  </label>
+                  <input
+                    type="text"
+                    value={photo}
+                    onChange={(e) => setPhoto(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg "
+                    placeholder="Paste image URL or upload using the button"
+                  />
+                  <p className="text-xs text-gray-500 mt-2">
+                    You can paste a direct image URL or upload a file using the upload button
+                  </p>
+                </div>
+
+                <button
+                  onClick={handleUpdate}
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700
+                   hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500
+                    text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 
+                    flex items-center justify-center gap-2 "
+                >
+                  {loading ? (
+                    <>      
+                      Updating Profile...
+                    </>
+                  ) : (
+                    <>
+                      Update Profile
+                    </>
+                  )}
+                </button>
+
+              
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default MyProfile;
