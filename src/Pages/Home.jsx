@@ -8,6 +8,7 @@ import EcoDecorIdeas from '../Components/EcoDecorIdeas';
 import PlantOfTheWeek from '../Components/PlantOfTheWeek';
 import GardeningTip from '../Components/GardeningTip';
 import PageLoader from '../Components/PageLoader';
+import EcoDeco from '../Components/EcoDeco';
 
 const Home = () => {
   const data = useLoaderData();
@@ -77,6 +78,7 @@ const Home = () => {
             <EcoDecorIdeas></EcoDecorIdeas>
             <PlantOfTheWeek></PlantOfTheWeek>
             <GardeningTip></GardeningTip>
+            <EcoDeco></EcoDeco>
         </div>
     );
 };

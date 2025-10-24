@@ -19,7 +19,10 @@ const Slider = () => {
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
+      scrollbar={{ draggable: true }} autoplay={{
+        delay: 2000, 
+        disableOnInteraction: false, 
+      }}
       className="w-full max-w-9/12 mx-auto mt-7"
     >
       <SwiperSlide className="relative">
