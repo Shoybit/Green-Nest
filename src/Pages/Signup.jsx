@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import PageLoader from '../Components/PageLoader';
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -13,15 +14,26 @@ const Signup = () => {
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+        const [loading, setLoading] = useState(true); 
+    
+        
+        useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 1500);
+        return () => clearTimeout(timer);
+      }, []);
+    
+      if (loading) {
+        return <PageLoader />;
+      }
 
     const validateForm = () => {
         if (password.length < 6) {
-            setError('Password must be at least 6 characters long');
+            // setError('Password must be at least 6 characters long');
             toast.error('Password must be at least 6 characters long');
             return false;
         }
         if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-            setError('Password must contain both uppercase and lowercase letters');
+            // setError('Password must contain both uppercase and lowercase letters');
             toast.error('Password must contain both uppercase and lowercase letters');
             return false;
         }
@@ -51,7 +63,7 @@ const Signup = () => {
             })
             .catch((error) => {
                 console.error('Signup error:', error.message);
-                setError(error.message);
+                // setError(error.message);
                 toast.error(`Signup failed: ${error.message}`);
             })
             .finally(() => {
@@ -141,9 +153,9 @@ const Signup = () => {
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? (
-                                    <FaEyeSlash className="h-5 w-5 " />
+                                    <FaEyeSlash className="h-5 w-5 text-gray-400 " />
                                 ) : (
-                                    <FaEye className="h-5 w-5" />
+                                    <FaEye className="h-5 w-5 text-gray-400 " />
                                 )}
                             </button>
                         </div>

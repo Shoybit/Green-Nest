@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import { useLoaderData, useParams } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PageLoader from '../Components/PageLoader'; 
 
 const CardDetails = () => {
     const data = useLoaderData();
@@ -12,10 +13,18 @@ const CardDetails = () => {
         name: '',
         email: ''
     });
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        const cardDetails = data.find((singleCard) => singleCard.id == id);
-        setCard(cardDetails);
+        const timer = setTimeout(() => setLoading(false), 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (data && id) {
+            const cardDetails = data.find((singleCard) => singleCard.id == id);
+            setCard(cardDetails);
+        }
     }, [data, id]);
 
     const handleInputChange = (e) => {
@@ -29,7 +38,7 @@ const CardDetails = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        toast.success('Booking successfuly.', {
+        toast.success('Booking successfully!', {
             position: "top-right",
             autoClose: 3000,
         });
@@ -39,6 +48,10 @@ const CardDetails = () => {
             email: ''
         });
     };
+
+    if (loading) {
+        return <PageLoader />;
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">
@@ -75,15 +88,14 @@ const CardDetails = () => {
                                         <div className="text-blue-600 font-semibold">Price</div>
                                         <div className="text-gray-800 font-bold text-xl">${card.price}</div>
                                     </div>
-                                    <div className="bg-yellow-50 p-4 rounded-lg ">
+                                    <div className="bg-yellow-50 p-4 rounded-lg">
                                         <div className="text-yellow-600 font-semibold">Rating</div>
-                                        
-                                        <div className="text-gray-800 flex  items-center">
-                                            <FaStar className="text-yellow-400 mr-1" />
-                                             {card.rating}</div>
+                                        <div className="text-gray-800 flex items-center">
+                                            <FaStar className="text-yellow-400 mr-1" /> {card.rating}
+                                        </div>
                                     </div>
                                     <div className="bg-purple-50 p-4 rounded-lg">
-                                        <div className="text-purple-600 font-semibold">Available Stock </div>
+                                        <div className="text-purple-600 font-semibold">Available Stock</div>
                                         <div className="text-gray-800">{card.availableStock}</div>
                                     </div>
                                 </div>
@@ -91,11 +103,8 @@ const CardDetails = () => {
                                 <div className="border-t pt-6">
                                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Book This Plant</h3>
                                     <form onSubmit={handleSubmit} className="space-y-4">
-                                        
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Name
-                                            </label>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                                             <input
                                                 type="text"
                                                 name="name"
@@ -108,9 +117,7 @@ const CardDetails = () => {
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Email
-                                            </label>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                                             <input
                                                 type="email"
                                                 name="email"
@@ -133,7 +140,9 @@ const CardDetails = () => {
                             </div>
                         </div>
                     </div>
-                ) : ''}
+                ) : (
+                    <p className="text-center text-gray-500">No plant data found.</p>
+                )}
             </div>
         </div>
     );

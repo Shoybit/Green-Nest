@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { useNavigate, Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
+import PageLoader from '../Components/PageLoader';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -15,7 +16,18 @@ const Login = () => {
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [resetSent, setResetSent] = useState(false);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true); 
+
     
+    useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
 
     const handleLogin = (e) => {
         e.preventDefault();

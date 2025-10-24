@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import Slider from '../Components/Slider';
 import Card from '../Components/Card';
@@ -7,17 +7,30 @@ import GreenExperts from '../Components/GreenExperts';
 import EcoDecorIdeas from '../Components/EcoDecorIdeas';
 import PlantOfTheWeek from '../Components/PlantOfTheWeek';
 import GardeningTip from '../Components/GardeningTip';
+import PageLoader from '../Components/PageLoader';
 
 const Home = () => {
-    const data = useLoaderData();
-    console.log('Loaded data:', data);
-    
+  const data = useLoaderData();
+  const [loading, setLoading] = useState(true);
+
     
     const topRatedPlants = data && Array.isArray(data) 
         ? data.filter(item => item && item.rating >= 4.8)
         : [];
 
     console.log('Top rated plants:', topRatedPlants);
+
+      useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [data]);
+
+  if (loading) {
+    return <PageLoader />; 
+  }
+
 
     return (
         <div className="min-h-screen">
