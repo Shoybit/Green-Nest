@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,16 +13,18 @@ import image4 from "../assets/imgi_23_indoor-plants-studio_23-2151022053.jpg";
 
 const Slider = () => {
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
+  <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }} autoplay={{
+      scrollbar={{ draggable: true }}
+      autoplay={{
         delay: 2000, 
-        disableOnInteraction: false, 
+        disableOnInteraction: false,
       }}
+      loop={true} 
       className="w-full max-w-9/12 mx-auto mt-7"
     >
       <SwiperSlide className="relative">
