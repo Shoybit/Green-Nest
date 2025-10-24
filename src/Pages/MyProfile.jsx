@@ -38,6 +38,7 @@ const MyProfile = () => {
       <div className="max-w-4xl mx-auto">
         <div className="rounded-2xl shadow-xl overflow-hidden transform">
           <div className="flex flex-col lg:flex-row">
+
             <div className="lg:w-2/5 bg-gradient-to-br from-green-600 to-emerald-600 p-8 flex flex-col items-center justify-center text-white">
               <img
                 src={user.photoURL}
@@ -61,6 +62,17 @@ const MyProfile = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                 />
               </div>
+
+                 <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2 ">
+                    Email Address
+                  </label>
+                  <div className="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 cursor-not-allowed">
+                    <p className="text-gray-800 font-medium">{user.email}</p>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Email cannot be changed</p>
+                </div>
+
 
               <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Photo URL</label>

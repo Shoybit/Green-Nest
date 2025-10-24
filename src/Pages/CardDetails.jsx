@@ -101,7 +101,7 @@ const CardDetails = () => {
                                 </div>
 
                                 <div className="border-t pt-6">
-                                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Book This Plant</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Book For Consultation</h3>
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
