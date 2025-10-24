@@ -5,6 +5,8 @@ import Card from '../Components/Card';
 import PlantsTips from '../Components/PlantsTips';
 import GreenExperts from '../Components/GreenExperts';
 import EcoDecorIdeas from '../Components/EcoDecorIdeas';
+import PlantOfTheWeek from '../Components/PlantOfTheWeek';
+import GardeningTip from '../Components/GardeningTip';
 
 const Home = () => {
     const data = useLoaderData();
@@ -59,6 +61,8 @@ const Home = () => {
             <PlantsTips></PlantsTips>
             <GreenExperts></GreenExperts>
             <EcoDecorIdeas></EcoDecorIdeas>
+            <PlantOfTheWeek></PlantOfTheWeek>
+            <GardeningTip></GardeningTip>
         </div>
     );
 };
