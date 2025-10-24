@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import PageLoader from "../Components/PageLoader";
+import { toast } from "react-toastify";
 
 const MyProfile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -27,6 +28,8 @@ const MyProfile = () => {
     setLoading(true); 
     await updateUserProfile({ displayName: name, photoURL: photo });
     setLoading(false);
+    toast.success("Profile updated successfully!"); 
+
   };
 
   if (loading) {

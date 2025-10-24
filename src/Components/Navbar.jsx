@@ -40,7 +40,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 shadow-sm w-full h-25 min-h-0 "> 
+        <div className="navbar bg-base-100 w-full bg-gradient-to-br from-green-900 to-green-700 text-white shadow-sm w-full h-25 min-h-0 "> 
             <div className="container mx-auto px-4">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -56,7 +56,7 @@ const Navbar = () => {
                                 </ActiveLink>
                             </li>
                             <li>
-                                <ActiveLink to="/plants">
+                                <ActiveLink className='' to="/plants">
                                     Plants
                                 </ActiveLink>
                             </li>
@@ -78,27 +78,27 @@ const Navbar = () => {
                                 className="w-10 h-10 object-contain"
                             />
                         </div>
-                        <span className="text-2xl font-semibold text-green-600">GreenNest</span>
+                        <span className="text-2xl font-semibold  bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent">GreenNest</span>
                     </Link>
                 </div>
 
                 
                 <div className="navbar-end">
                     <div className="hidden lg:flex">
-                        <ul className="menu menu-horizontal menu-sm px-1 space-x-1">
+                        <ul className="menu menu-horizontal menu-sm px-1 space-x-5">
                             <li>
-                                <ActiveLink to="/" className="py-1 px-2 text-sm">
+                                <ActiveLink to="/" className="py-1 px-2 text-[16px] font-semibold">
                                     Home
                                 </ActiveLink>
                             </li>
                             <li>
-                                <ActiveLink to="/plants" className="py-1 px-2 text-sm">
+                                <ActiveLink to="/plants" className="py-1 px-2 text-[16px] font-semibold">
                                     Plants
                                 </ActiveLink>
                             </li>
                             {user && (
                                 <li>
-                                    <ActiveLink to="/myprofile" className="py-1 px-2 text-sm">
+                                    <ActiveLink to="/myprofile" className="py-1 px-2 text-[16px] font-semibold">
                                         My Profile
                                     </ActiveLink>
                                 </li>
@@ -108,12 +108,12 @@ const Navbar = () => {
 
                    
                     <div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-4 ml-4">
                             {user ? (
                                
-                                <div className="dropdown dropdown-end">
+                                <div className="dropdown dropdown-end ">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar btn-sm">
-                                        <div className="w-8 h-8 rounded-full border-2 border-green-500 overflow-hidden">
+                                        <div className="w-8 h-8 rounded-full border-2 border-green-500  overflow-hidden">
                                             {user.photoURL ? (
                                                
                                                 <img 
@@ -136,7 +136,7 @@ const Navbar = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-2 w-40 p-2 shadow">
+                                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-[#007032] rounded-box z-50 mt-2 w-40 p-2 shadow">
                                         <li className="py-1 border-b border-gray-200">
                                             <div className="flex items-center space-x-2">
                                                 <p className="text-sm font-semibold">
@@ -149,14 +149,14 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-4">
                                     <ActiveLink to="/login">
-                                        <button className="btn btn-sm btn-primary bg-green-600 border-green-600 hover:bg-green-700 text-white">
+                                        <button className="btn btn-sm btn-primary bg-green-600 border-green-600 hover:bg-green-700 text-[16px] font-semibold text-white">
                                             Login
                                         </button>
                                     </ActiveLink>
                                     <ActiveLink to="/signup">
-                                        <button className="btn btn-sm btn-outline border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
+                                        <button className="btn btn-sm btn-outline border-green-600 text-white hover:bg-green-600 text-[16px] font-semibold hover:text-white">
                                             Register
                                         </button>
                                     </ActiveLink>
