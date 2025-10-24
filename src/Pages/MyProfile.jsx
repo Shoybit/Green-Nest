@@ -9,6 +9,10 @@ const MyProfile = () => {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(true); 
+    const [editMode, setEditMode] = useState(false);
+    const [updating, setUpdating] = useState(false); 
+
+
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,10 +29,11 @@ const MyProfile = () => {
   const handleUpdate = async () => {
     if (!name.trim()) return;
 
-    setLoading(true); 
+    setUpdating(true); 
     await updateUserProfile({ displayName: name, photoURL: photo });
-    setLoading(false);
+    setUpdating(false);
     toast.success("Profile updated successfully!"); 
+    setEditMode(false); 
 
   };
 
@@ -37,8 +42,9 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br py-30 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen flex items-center justify-center bg-[#f0fdf4]">
+      <div className="max-w-4xl w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
+
         <div className="rounded-2xl shadow-xl overflow-hidden transform">
           <div className="flex flex-col lg:flex-row">
 
@@ -54,45 +60,82 @@ const MyProfile = () => {
 
             <div className="lg:w-3/5 p-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">Profile Information</h3>
-              <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Display Name
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-                />
-              </div>
-
-                 <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2 ">
-                    Email Address
-                  </label>
-                  <div className="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 cursor-not-allowed">
-                    <p className="text-gray-800 font-medium">{user.email}</p>
+              
+             {!editMode ? (
+                <div>
+                  <div className="mb-4">
+                    <p className="text-gray-700">
+                      <strong>Name:</strong> {user.displayName}
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">Email cannot be changed</p>
-                </div>
 
+                  <div className="mb-4">
+                    <p className="text-gray-700">
+                      <strong>Email:</strong> {user.email}
+                    </p>
+                  </div>
 
-              <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Photo URL</label>
-                <input
-                  type="text"
-                  value={photo}
-                  onChange={(e) => setPhoto(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-                />
+                  <div className="mb-6">
+                    <p className="text-gray-700 break-all">
+                      <strong>Photo URL:</strong> {user.photoURL}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setEditMode(true)}
+                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200"
+                  >
+                    Update Profile
+                  </button>
               </div>
+              ) : (
+                <div>
+                  <div className="transition-all duration-500 ease-in-out">
+                    <div className="mb-6">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Display Name
+                      </label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                      />
+                    </div>
 
-              <button
-                onClick={handleUpdate}
-                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200"
-              >
-                Update Profile
-              </button>
+                    <div className="mb-6">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Photo URL
+                      </label>
+                      <input
+                        type="text"
+                        value={photo}
+                        onChange={(e) => setPhoto(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                      />
+                    </div>
+
+                    <div className="flex gap-4">
+                      <button
+                        onClick={handleUpdate}
+                        disabled={updating}
+                        className={`flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 ${
+                          updating && "opacity-70 cursor-not-allowed"
+                        }`}
+                      >
+                        {updating ? "Saving.." : "Save Changes"}
+                      </button>
+
+                      <button
+                        onClick={() => setEditMode(false)}
+                        className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-lg transition-all duration-200"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -100,5 +143,6 @@ const MyProfile = () => {
     </div>
   );
 };
+
 
 export default MyProfile;

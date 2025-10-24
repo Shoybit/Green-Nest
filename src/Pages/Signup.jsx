@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 import PageLoader from '../Components/PageLoader';
 
 const Signup = () => {
@@ -14,26 +15,23 @@ const Signup = () => {
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-        const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true); 
     
-        
-        useEffect(() => {
+    useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 1500);
         return () => clearTimeout(timer);
-      }, []);
+    }, []);
     
-      if (loading) {
+    if (loading) {
         return <PageLoader />;
-      }
+    }
 
     const validateForm = () => {
         if (password.length < 6) {
-            // setError('Password must be at least 6 characters long');
             toast.error('Password must be at least 6 characters long');
             return false;
         }
         if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-            // setError('Password must contain both uppercase and lowercase letters');
             toast.error('Password must contain both uppercase and lowercase letters');
             return false;
         }
@@ -44,9 +42,7 @@ const Signup = () => {
         e.preventDefault();
         setError('');
 
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -57,21 +53,27 @@ const Signup = () => {
             })
             .then(() => {
                 toast.success('Account created successfully');
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000);
+                setTimeout(() => navigate('/'), 2000);
             })
             .catch((error) => {
-                console.error('Signup error:', error.message);
-                // setError(error.message);
                 toast.error(`Signup failed: ${error.message}`);
+            });
+    };
+
+    const handleGoogleLogin = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                toast.success('Google login successful!',result.user);
+                navigate('/');
             })
-            .finally(() => {
+            .catch((error) => {
+                toast.error(error.message);
             });
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen flex items-center justify-center bg-[#f0fdf4] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -81,22 +83,22 @@ const Signup = () => {
 
                 <form className="mt-8 space-y-6" onSubmit={handleSignup}>
                     {error && (
-                    <div className="alert alert-error">
-                        <span>{error}</span>
-                    </div>
-                )}
+                        <div className="alert alert-error">
+                            <span>{error}</span>
+                        </div>
+                    )}
+
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                             Full Name
                         </label>
                         <input
                             id="name"
-                            name="name"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter your full name"
-                            className="input input-bordered w-full mt-1 "
+                            className="input input-bordered w-full mt-1"
                             required
                         />
                     </div>
@@ -107,23 +109,21 @@ const Signup = () => {
                         </label>
                         <input
                             id="email"
-                            name="email"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="input input-bordered w-full mt-1 "
+                            className="input input-bordered w-full mt-1"
                             required
                         />
                     </div>
 
-                                        <div>
+                    <div>
                         <label htmlFor="photoURL" className="block text-sm font-medium text-gray-700">
                             Profile Photo URL 
                         </label>
                         <input
                             id="photoURL"
-                            name="photoURL"
                             type="url"
                             value={photoURL}
                             onChange={(e) => setPhotoURL(e.target.value)}
@@ -139,12 +139,11 @@ const Signup = () => {
                         <div className="relative">
                             <input
                                 id="password"
-                                name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Create a password"
-                                className="input input-bordered w-full mt-1 pr-10 "
+                                className="input input-bordered w-full mt-1 pr-10"
                                 required
                             />
                             <button
@@ -153,9 +152,9 @@ const Signup = () => {
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? (
-                                    <FaEyeSlash className="h-5 w-5 text-gray-400 " />
+                                    <FaEyeSlash className="h-5 w-5 text-gray-400" />
                                 ) : (
-                                    <FaEye className="h-5 w-5 text-gray-400 " />
+                                    <FaEye className="h-5 w-5 text-gray-400" />
                                 )}
                             </button>
                         </div>
@@ -164,12 +163,23 @@ const Signup = () => {
                         </p>
                     </div>
 
+                    <div className="mt-4">
+                        <button
+                            type="button"
+                            onClick={handleGoogleLogin}
+                            className="w-full flex justify-center items-center gap-3 py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
+                            <FcGoogle className="h-5 w-5" />
+                            Continue with Google
+                        </button>
+                    </div>
+
                     <div>
                         <button
                             type="submit"
                             className="btn btn-primary w-full bg-green-600 hover:bg-green-700 border-green-600"
-                        >  
-                              Register
+                        >
+                            Register
                         </button>
                     </div>
 

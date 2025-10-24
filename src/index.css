@@ -4,3 +4,6 @@
   themes: light --default, light --prefersdark, cupcake;
 }
 
+body {
+    background-color: #f0fdf4; 
+}
