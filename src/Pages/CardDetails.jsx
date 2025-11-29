@@ -15,6 +15,11 @@ const CardDetails = () => {
     });
     const [loading, setLoading] = useState(true); 
 
+
+    useEffect(() => {
+    document.title = "Plant Details | Green-Nest";
+  }, []);
+
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 1000);
         return () => clearTimeout(timer);

@@ -12,7 +12,9 @@ const MyProfile = () => {
     const [editMode, setEditMode] = useState(false);
     const [updating, setUpdating] = useState(false); 
 
-
+    useEffect(() => {
+    document.title = "My Profile | Green-Nest";
+  }, []);
   
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -14,6 +14,10 @@ const Home = () => {
   const data = useLoaderData();
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+  document.title = "Home | Green-Nest";
+}, []);
+
     
     const topRatedPlants = data && Array.isArray(data) 
         ? data.filter(item => item && item.rating >= 4.8)

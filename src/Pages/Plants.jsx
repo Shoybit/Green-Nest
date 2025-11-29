@@ -7,6 +7,11 @@ const Plants = () => {
   const data = useLoaderData();
   const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+    document.title = "Plants | Green-Nest";
+  }, []);
+  
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
@@ -15,6 +20,8 @@ const Plants = () => {
   if (loading) {
     return <PageLoader />;
   }
+
+  
 
   return (
     <div className="min-h-screen bg-[#f0fdf4] py-8">
