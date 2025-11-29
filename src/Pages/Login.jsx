@@ -18,6 +18,10 @@ const Login = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true); 
 
+
+     useEffect(() => {
+    document.title = "Login | Green-Nest";
+  }, []);
     
     useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);

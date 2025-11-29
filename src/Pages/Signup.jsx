@@ -16,6 +16,10 @@ const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true); 
+
+         useEffect(() => {
+        document.title = "Register | Green-Nest";
+      }, []);
     
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 1500);

@@ -40,7 +40,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 w-full bg-gradient-to-br from-green-900 to-green-700 text-white shadow-sm w-full h-25 min-h-0 "> 
+        <div className="navbar bg-base-100 w-full bg-linear-to-br from-green-900 to-green-700 text-white shadow-sm h-25 min-h-0 "> 
             <div className="container mx-auto px-4">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -49,14 +49,14 @@ const Navbar = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
-                        <ul tabIndex={0}  className="menu menu-sm dropdown-content rounded-box z-50 mt-2 w-44 p-2 shadow bg-gradient-to-br from-green-900 to-green-700 text-white">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content rounded-box z-50 mt-2 w-44 p-2 shadow bg-linear-to-br from-green-900 to-green-700 text-white">
                             <li>
                                 <ActiveLink to="/">
                                     Home
                                 </ActiveLink>
                             </li>
                             <li>
-                                <ActiveLink className='' to="/plants">
+                                <ActiveLink to="/plants">
                                     Plants
                                 </ActiveLink>
                             </li>
@@ -67,6 +67,8 @@ const Navbar = () => {
                                     </ActiveLink>
                                 </li>
                             )}
+                            
+
                         </ul>
                     </div>
                     
@@ -78,7 +80,7 @@ const Navbar = () => {
                                 className="w-10 h-10 object-contain"
                             />
                         </div>
-                        <span className="text-2xl font-semibold  bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent">GreenNest</span>
+                        <span className="text-2xl font-semibold  bg-linear-to-r from-green-400 to-green-200 bg-clip-text text-transparent">GreenNest</span>
                     </Link>
                 </div>
 
@@ -111,9 +113,9 @@ const Navbar = () => {
                         <div className="flex items-center space-x-4 ml-4">
                             {user ? (
                                
-                                <div className="dropdown dropdown-end ">
+                                <div className="dropdown dropdown-end">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar btn-sm">
-                                        <div className="w-8 h-8 rounded-full border-2 border-green-500  overflow-hidden">
+                                        <div className="w-8 h-8 rounded-full border-2 border-green-500 overflow-hidden">
                                             {user.photoURL ? (
                                                
                                                 <img 
@@ -130,7 +132,7 @@ const Navbar = () => {
                                                 
                                                 <div className="w-full h-full bg-green-200 flex items-center justify-center">
                                                     <span className="text-green-700 text-xs font-bold">
-                                                        {user.displayName}
+                                                        {user.displayName ? user.displayName.charAt(0).toUpperCase() : 'U'}
                                                     </span>
                                                 </div>
                                             )}
@@ -148,19 +150,44 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             ) : (
-                                
-                                <div className="flex items-center space-x-4">
-                                    <ActiveLink to="/login">
-                                        <button className="btn btn-sm btn-primary bg-green-600 border-green-600 hover:bg-green-700 text-[16px] font-semibold text-white">
-                                            Login
-                                        </button>
-                                    </ActiveLink>
-                                    <ActiveLink to="/signup">
-                                        <button className="btn btn-sm btn-outline border-green-600 text-white hover:bg-green-600 text-[16px] font-semibold hover:text-white">
-                                            Register
-                                        </button>
-                                    </ActiveLink>
-                                </div>
+                                <>
+                                    {/* Desktop view login/register buttons */}
+                                    <div className="hidden lg:flex items-center space-x-4">
+                                        <ActiveLink to="/login">
+                                            <button className="btn btn-sm btn-primary bg-green-600 border-green-600 hover:bg-green-700 text-[16px] font-semibold text-white">
+                                                Login
+                                            </button>
+                                        </ActiveLink>
+                                        <ActiveLink to="/signup">
+                                            <button className="btn btn-sm btn-outline border-green-600 text-white hover:bg-green-600 text-[16px] font-semibold hover:text-white">
+                                                Register
+                                            </button>
+                                        </ActiveLink>
+                                    </div>
+                                    
+                                    {/* Mobile view login/register dropdown */}
+                                    <div className="dropdown dropdown-end lg:hidden">
+                                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm">
+                                            <div className="w-8 h-8 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <ul tabIndex={0} className="menu menu-sm dropdown-content bg-[#007032] rounded-box z-50 mt-2 w-40 p-2 shadow">
+                                            <li>
+                                                <ActiveLink to="/login" className="py-1 px-2 text-[16px] font-semibold">
+                                                    Login
+                                                </ActiveLink>
+                                            </li>
+                                            <li>
+                                                <ActiveLink to="/signup" className="py-1 px-2 text-[16px] font-semibold">
+                                                    Register
+                                                </ActiveLink>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </>
                             )}
                         </div>
                     </div>
