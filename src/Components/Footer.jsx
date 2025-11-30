@@ -5,14 +5,14 @@ import logo from '../assets/green_nest_packaging_solutions_logo-depositphotos-bg
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-linear-to-br from-green-900 to-green-700 text-white">
+    <footer className="w-full bg-gradient-to-br from-green-900 to-green-700 text-white">
       <div className="max-w-11/12 mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row justify-between gap-8 mb-12">
           
           <div className="flex-1 space-y-4">
             <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="GreenNest Logo" className="w-10 h-10" />
-              <span className="text-2xl font-bold bg-linear-to-r from-green-400 to-green-200 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent">
                 GreenNest
               </span>
             </Link>
