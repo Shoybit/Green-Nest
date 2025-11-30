@@ -119,8 +119,7 @@ This project helps users explore eco-friendly lifestyle ideas and products throu
 
 ## ✨ Developer
 
-**Md Shoyaib Islam** — Front-End Developer (React, Tailwind, Firebase)
+**Md Shoyaib Islam** — Frontend Developer  
+Tech Stack: React.js • Next.js • Tailwind CSS • Firebase • MongoDB
 
----
-
-If you want, I can also generate **badges**, **screenshots section**, or a **GitHub-friendly version**.
+I build modern, responsive, and high-performance web applications with clean UI and smooth user experience. Passionate about writing optimized code and creating visually appealing digital products.
