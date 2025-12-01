@@ -19,6 +19,12 @@ const PlantsTips = () => {
       title: "Fertilizing Tips",
       image: "https://i.ibb.co.com/gZrNspdy/f84087424ffc2eb2efd09f755adbaa9a.jpg",
       description: "Discover when and how to fertilize your plants. Use the right type of fertilizer and apply it during the growing season."
+    },
+    {
+      id: 3,
+      title: "Fertilizing Tips",
+      image: "https://i.ibb.co.com/gZrNspdy/f84087424ffc2eb2efd09f755adbaa9a.jpg",
+      description: "Discover when and how to fertilize your plants. Use the right type of fertilizer and apply it during the growing season."
     }
   ];
 
@@ -32,8 +38,8 @@ const PlantsTips = () => {
         </p>
       </div>
 
-      <div className="max-w-9/12 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-11/12 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {cardsData.map((card) => (
             <div 
               key={card.id}

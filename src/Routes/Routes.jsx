@@ -1,4 +1,3 @@
-// src/Routes/Routes.jsx
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Home from "../Pages/Home";
@@ -23,7 +22,8 @@ export const router = createBrowserRouter([
       { 
         path: 'plants',
         element: <Plants />,
-        loader: () => fetch('../Plant.data.json')
+                loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
+
        },
       {
         path: 'myprofile',

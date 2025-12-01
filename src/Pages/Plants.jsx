@@ -5,6 +5,7 @@ import PageLoader from '../Components/PageLoader';
 
 const Plants = () => {
   const data = useLoaderData();
+  console.log(data);
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
