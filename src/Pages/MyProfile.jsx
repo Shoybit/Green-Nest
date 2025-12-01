@@ -50,7 +50,7 @@ const MyProfile = () => {
         <div className="rounded-2xl shadow-xl overflow-hidden transform">
           <div className="flex flex-col lg:flex-row">
 
-            <div className="lg:w-2/5 bg-gradient-to-br from-green-600 to-emerald-600 p-8 flex flex-col items-center justify-center text-white">
+            <div className="lg:w-2/5 bg-linear-to-br from-green-600 to-emerald-600 p-8 flex flex-col items-center justify-center text-white">
               <img
                 src={user.photoURL}
                 alt="Profile"
@@ -85,7 +85,7 @@ const MyProfile = () => {
 
                   <button
                     onClick={() => setEditMode(true)}
-                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200"
+                    className="w-full bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200"
                   >
                     Update Profile
                   </button>
@@ -121,7 +121,7 @@ const MyProfile = () => {
                       <button
                         onClick={handleUpdate}
                         disabled={updating}
-                        className={`flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 ${
+                        className={`flex-1 bg-linear-to-r from-green-600 to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 ${
                           updating && "opacity-70 cursor-not-allowed"
                         }`}
                       >
