@@ -32,9 +32,9 @@ const EcoDeco = () => {
   ];
 
   return (
-    <section className="py-12 bg-[#f0fdf4]">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+    <section className=" bg-[#f0fdf4]">
+      <div className="mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-5">
           Eco Decor Ideas
         </h2>
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">

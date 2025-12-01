@@ -26,7 +26,7 @@ const Plants = () => {
 
   return (
     <div className="min-h-screen bg-[#f0fdf4] py-8">
-      <div className="w-11/12 mx-auto px-4">
+      <div className="w-11/12 mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             All Plants Collection

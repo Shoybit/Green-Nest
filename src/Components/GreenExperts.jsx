@@ -37,7 +37,7 @@ const GreenExperts = () => {
   ];
 
   return (
-    <div className=" py-12">
+    <div className=" py-10">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold  mb-4">Meet Our Green Experts</h1>
