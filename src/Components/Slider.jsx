@@ -25,13 +25,13 @@ const Slider = () => {
         disableOnInteraction: false,
       }}
       loop={true} 
-      className="w-full max-w-9/12 mx-auto mt-7"
+      className="w-full max-w-full mx-auto"
     >
       <SwiperSlide className="relative">
         <img
           src={image1}
           alt="Cozy nest atop mountain"
-          className="w-full h-80 md:h-96 lg:h-[450px] object-cover mx-auto rounded-lg"
+          className="w-full h-80 md:h-96 lg:h-[500px] object-cover mx-auto rounded-lg"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 rounded-lg p-4 text-center">
           <h2 className="text-white text-2xl md:text-4xl font-bold mb-2">
@@ -47,7 +47,7 @@ const Slider = () => {
         <img
           src={image2}
           alt="Close up bird perching leaf"
-          className="w-full h-80 md:h-96 lg:h-[450px] object-cover mx-auto rounded-lg"
+          className="w-full h-80 md:h-96 lg:h-[500px] object-cover mx-auto rounded-lg"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 rounded-lg p-4 text-center">
           <h2 className="text-white text-2xl md:text-4xl font-bold mb-2">
@@ -63,7 +63,7 @@ const Slider = () => {
         <img
           src={image3}
           alt="Bird nest hanging from tree"
-          className="w-full h-80 md:h-96 lg:h-[450px] object-cover mx-auto rounded-lg"
+          className="w-full h-80 md:h-96 lg:h-[500px] object-cover mx-auto rounded-lg"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 rounded-lg p-4 text-center">
           <h2 className="text-white text-2xl md:text-4xl font-bold mb-2">
@@ -79,7 +79,7 @@ const Slider = () => {
         <img
           src={image4}
           alt="Indoor Plant Studio"
-          className="w-full h-80 md:h-96 lg:h-[450px] object-cover mx-auto rounded-lg"
+          className="w-full h-80 md:h-96 lg:h-[500px] object-cover mx-auto rounded-lg"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 rounded-lg p-4 text-center">
           <h2 className="text-white text-2xl md:text-4xl font-bold mb-2">
