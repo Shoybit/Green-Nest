@@ -4,7 +4,7 @@ import plantImg from "../assets/imgi_18_indoor-plants-studio_23-2151022068.jpg";
 const PlantOfTheWeek = () => {
   return (
 <div>
-        <section className="max-w-5xl mx-auto mt-12 bg-white  rounded-lg p-6 border">
+        <section className="max-w-5xl mx-auto mt-12 bg-white  rounded-lg p-6 shadow-md border border-gray-300/30">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
          Plant of the Week
       </h2>

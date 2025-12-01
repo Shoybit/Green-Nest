@@ -42,7 +42,7 @@ const Navbar = () => {
     return (
         <nav className='sticky top-0 z-50 '>
                     <div className="navbar bg-base-100 w-full bg-linear-to-br from-green-900 to-green-700 text-white shadow-sm  min-h-0 "> 
-            <div className="container mx-auto px-4">
+            <div className="w-11/12 mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-sm lg:hidden">
@@ -73,8 +73,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     
-                    <Link to="/" className="flex items-center space-x-1 ml-1">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center"> 
+                    <Link to="/" className="flex items-center">
+                        <div className="h-12 rounded-full flex items-center justify-center"> 
                             <img 
                                 src="/green_nest_packaging_solutions_logo-depositphotos-bgremover.png" 
                                 alt="GreenNest Logo" 
@@ -88,7 +88,7 @@ const Navbar = () => {
                 
                 <div className="navbar-end">
                     <div className="hidden lg:flex">
-                        <ul className="menu menu-horizontal menu-sm px-1 space-x-5">
+                        <ul className="menu menu-horizontal menu-sm">
                             <li>
                                 <ActiveLink to="/" className="py-1 px-2 text-[16px] font-semibold">
                                     Home
@@ -111,7 +111,7 @@ const Navbar = () => {
 
                    
                     <div>
-                        <div className="flex items-center space-x-4 ml-4">
+                        <div className="flex items-center ">
                             {user ? (
                                
                                 <div className="dropdown dropdown-end">

@@ -37,7 +37,7 @@ const GreenExperts = () => {
   ];
 
   return (
-    <div className=" py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" py-12">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold  mb-4">Meet Our Green Experts</h1>
@@ -47,7 +47,7 @@ const GreenExperts = () => {
       </div>
 
       {/* Experts Grid */}
-      <div className="max-w-7xl mx-auto">
+      <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {expertsData.map((expert) => (
             <div 

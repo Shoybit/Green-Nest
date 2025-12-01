@@ -21,25 +21,24 @@ const PlantsTips = () => {
       description: "Discover when and how to fertilize your plants. Use the right type of fertilizer and apply it during the growing season."
     },
     {
-      id: 3,
-      title: "Fertilizing Tips",
+      id: 4,
+      title: "Pruning Guide",
       image: "https://i.ibb.co.com/gZrNspdy/f84087424ffc2eb2efd09f755adbaa9a.jpg",
-      description: "Discover when and how to fertilize your plants. Use the right type of fertilizer and apply it during the growing season."
+      description: "Regular pruning helps plants grow healthier and look better."
     }
   ];
 
   return (
-    <div className=" py-4
-     mt-[-30px] px-4 sm:px-6 lg:px-8">
+    <div className="py-4 mt-[-30px]">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Plant Care Tips </h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Plant Care Tips</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Essential gardening tips for healthy plants
         </p>
       </div>
 
-      <div className="max-w-11/12 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {cardsData.map((card) => (
             <div 
               key={card.id}

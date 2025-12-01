@@ -23,34 +23,45 @@ const EcoDeco = () => {
       desc: "Decorate your dining or work table with small succulents or bonsai plants.",
       img: img3,
     },
+    {
+      id: 4, 
+      title: "Bathroom Plant Decor",
+      desc: "Moisture-loving plants like ferns thrive in bathroom humidity.",
+      img: img1,
+    },
   ];
 
   return (
     <section className="py-12 bg-[#f0fdf4]">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center  mb-8">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Eco Decor Ideas
         </h2>
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
           Discover creative ways to style your space with plants — from hanging pots to green corners that make your home both beautiful and eco-friendly.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {ideas.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:scale-105 transition-transform duration-300"
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full"
             >
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-5">
-                <h3 className="text-xl font-semibold text-green-700 mb-2">
+              <div className="h-48 w-full overflow-hidden">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <div className="p-6 grow">
+                <h3 className="text-xl font-bold text-gray-800 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             </div>
           ))}
