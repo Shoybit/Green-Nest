@@ -29,7 +29,7 @@ const PlantsTips = () => {
   ];
 
   return (
-    <div className="py-4 mt-[-30px]">
+    <div className="py-4 -mt-5">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-800 mb-4">Plant Care Tips</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
