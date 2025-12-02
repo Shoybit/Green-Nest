@@ -42,9 +42,8 @@ export const router = createBrowserRouter([
       {
         path: 'card-details/:id',
         element: (
-          <ProtectedRoute>
             <CardDetails />
-          </ProtectedRoute>
+
         ),
       },
       { 
