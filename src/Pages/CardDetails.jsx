@@ -56,7 +56,6 @@ useEffect(() => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    // 🔥 UPDATED handleSubmit — Bookings will save in DB
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -180,8 +179,9 @@ useEffect(() => {
                                                     type="email"
                                                     name="email"
                                                     value={formData.email}
+                                                     readOnly 
                                                     onChange={handleInputChange}
-                                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg cursor-not-allowed"
                                                     placeholder="Enter your email address"
                                                     required
                                                 />
