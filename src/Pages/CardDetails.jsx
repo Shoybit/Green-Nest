@@ -19,14 +19,21 @@ const CardDetails = () => {
         email: ''
     });
 
-    useEffect(() => {
-        document.title = "Plant Details | Green-Nest";
+useEffect(() => {
+    document.title = "Plant Details | Green-Nest";
 
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-        return () => unsubscribe();
-    }, []);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        if (currentUser) {
+            setFormData(prev => ({
+                ...prev,
+                email: currentUser.email
+            }));
+        }
+    });
+
+    return () => unsubscribe();
+}, []);
 
     useEffect(() => {
         const fetchCardDetails = async () => {
