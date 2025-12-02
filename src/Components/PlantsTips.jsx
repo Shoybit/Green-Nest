@@ -23,8 +23,8 @@ const PlantsTips = () => {
     {
       id: 4,
       title: "Pruning Guide",
-      image: "https://i.ibb.co.com/gZrNspdy/f84087424ffc2eb2efd09f755adbaa9a.jpg",
-      description: "Regular pruning helps plants grow healthier and look better."
+      image: "https://i.ibb.co.com/QvqRMXJy/cropped-hand-cutting-plant-stem-with-pruning-shears-1048944-7480089.jpg",
+      description: "Regular pruning is essential for plant health and appearance, a widely accepted practice in gardening and horticulture. "
     }
   ];
 

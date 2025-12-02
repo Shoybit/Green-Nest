@@ -25,9 +25,9 @@ const EcoDeco = () => {
     },
     {
       id: 4, 
-      title: "Bathroom Plant Decor",
-      desc: "Moisture-loving plants like ferns thrive in bathroom humidity.",
-      img: img1,
+      title: "Washroom Plant Decor",
+      desc: "Moisture-loving plants like ferns thrive in washroom humidity.",
+      img: 'https://i.ibb.co.com/pjbJyp46/images-q-tbn-ANd9-Gc-QNX9-r-JQ5o-Wf-Rc-J6-Nyzq-XLAM5-ZLCk-Lh-YMh-YG2-Gc8kkwp-DUHT0-V.jpg',
     },
   ];
 
