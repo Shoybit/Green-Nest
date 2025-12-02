@@ -218,7 +218,7 @@ useEffect(() => {
                             {/* Benefits */}
                             {card.benefits && (
                                 <div className="mb-4">
-                                    <h4 className="text-xl font-semibold text-blue-700 mb-2">Benefits</h4>
+                                    <h4 className="text-xl font-semibold text-green-700 mb-2">Benefits</h4>
                                     <ul className="list-disc list-inside text-gray-700">
                                         {card.benefits.map((benefit, idx) => (
                                             <li key={idx}>{benefit}</li>
@@ -231,7 +231,7 @@ useEffect(() => {
                             {/* Placement */}
                             {card.placementSuggestions && (
                                 <div className="mb-4">
-                                    <h4 className="text-xl font-semibold text-purple-700 mb-2">Placement Suggestions</h4>
+                                    <h4 className="text-xl font-semibold text-green-700 mb-2">Placement Suggestions</h4>
                                     <ul className="list-disc list-inside text-gray-700">
                                         {card.placementSuggestions.map((place, idx) => (
                                             <li key={idx}>{place}</li>
