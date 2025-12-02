@@ -1,66 +1,67 @@
-# 🌿 GreenNest — Eco-Friendly Living Website
+# Green-Nest 
 
-A modern, responsive, and eco-friendly web application built using **React**, **Tailwind CSS**, and **Firebase**, focused on promoting sustainable products and green lifestyle awareness.
+A modern, responsive, and eco‑friendly web application built using **React**, **Tailwind CSS**, and **Firebase** — promoting sustainable products and green lifestyle awareness.  
 
-Live Site: *([https://remarkable-torte-c4c438.netlify.app/](https://remarkable-torte-c4c438.netlify.app/))*
+**Live Demo:** [https://remarkable-torte-c4c438.netlify.app/](https://remarkable-torte-c4c438.netlify.app/)  
+**Server:** [Green-Nest Server](https://github.com/Shoybit/Green-Nest-Server)
 
----
-
-## 🚀 Features
-
-* Fully responsive clean UI
-* Smooth navigation with React Router
-* Firebase Authentication
-* Product sections & eco-friendly content
-* Beautiful components using Tailwind + DaisyUI
-* Toast notifications & loaders
-* Swiper sliders for UI enhancement
 
 ---
 
-## 🛠️ Technologies Used
+##  Features
 
-### **Frontend**
-
-* **React 19** — component-based UI
-* **React DOM**
-* **React Router DOM** — navigation
-* **Tailwind CSS 4** — modern styling
-* **DaisyUI** — UI components
-* **React Icons** — icons
-* **Swiper** — sliders & carousels
-* **React Toastify** — notifications
-* **React Spinners** — loaders
-
-### **Backend / Services**
-
-* **Firebase 12** — Authentication & Hosting Support
-
-### **Build Tools**
-
-* **Vite** — fast development & build
-* **ESLint** — clean and error-free code
+- Fully responsive clean UI  
+- Smooth navigation with React Router v7  
+- Firebase Authentication (login/signup)  
+- Product sections & eco‑friendly content  
+- Beautiful components styled with Tailwind + DaisyUI  
+- Toast notifications & spinners (loaders) for better UX  
+- Swiper sliders for enhanced UI/UX  
+- SweetAlert2 popups for interactive alerts  
 
 ---
 
-## 📁 Project Setup
+##  Technologies Used
 
-### **1️⃣ Clone the project**
+**Frontend**  
+- React v19   
+- React Router DOM v7  
+- Tailwind CSS v4  
+- DaisyUI  
+- React Icons  
+- Swiper  
+- React Toastify  
+- React Spinners  
+- SweetAlert2  
+
+**Backend / Services**  
+- Firebase v12 (Authentication, Hosting, Database if used)  
+
+**Build & Dev Tools**  
+- Vite v7  
+- ESLint + Plugins for React & Hooks  
+- Node.js (for running npm scripts)  
+
+---
+
+##  Installation & Project Setup
+
+1. Clone the repository  
 
 ```bash
-git clone https://github.com/your-username/greennest.git
-cd greennest
+git clone https://github.com/Shoybit/Green-Nest.git
+cd Green-Nest
 ```
 
-### **2️⃣ Install dependencies**
+2. Install dependencies  
 
 ```bash
 npm install
 ```
 
-### **3️⃣ Create Firebase config**
+3. Add Firebase config  
 
-Inside `src/firebase.js`
+- Create `src/firebase.js` with your Firebase credentials:  
 
 ```js
 import { initializeApp } from "firebase/app";
@@ -77,49 +78,55 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 ```
 
-### **4️⃣ Run the development server**
+4. Run development server  
 
 ```bash
 npm run dev
 ```
 
-### **5️⃣ Build for production**
+5. Build for production  
 
 ```bash
 npm run build
 ```
 
----
+6. Preview production build  
 
-## 📦 Folder Structure
-
-```
-📦 src
- ┣ 📂 components
- ┣ 📂 pages
- ┣ 📂 hooks
- ┣ 📂 context
- ┣ 📂 assets
- ┣ 📜 main.jsx
- ┣ 📜 App.jsx
+```bash
+npm run preview
 ```
 
 ---
 
-## 🌱 Project Purpose
+##  Folder Structure
 
-This project helps users explore eco-friendly lifestyle ideas and products through a clean and modern interface. It's built to practice:
-
-* Clean UI/UX design
-* Component-based architecture
-* Firebase authentication
-* Smooth and responsive layout
+```
+src
+┣ components
+┣ pages
+┣ hooks
+┣ context
+┣ assets
+┣ main.jsx
+┗ App.jsx
+```
 
 ---
 
-## ✨ Developer
+##  Project Purpose
 
-**Md Shoyaib Islam** — Frontend Developer  
-Tech Stack: React.js • Next.js • Tailwind CSS • Firebase • MongoDB
+Green-Nest helps users explore eco‑friendly lifestyle ideas and products with a modern, responsive interface.  
+It focuses on:
 
-I build modern, responsive, and high-performance web applications with clean UI and smooth user experience. Passionate about writing optimized code and creating visually appealing digital products.
+- Component-based UI  
+- Responsive layouts  
+- Firebase Authentication  
+- Smooth UX with notifications, loaders, and alerts  
+
+---
+
+##  Developer
+
+Md Shoyaib Islam — Front-End Developer (React, Tailwind, Firebase)  
+
+---

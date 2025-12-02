@@ -112,8 +112,8 @@ useEffect(() => {
 
                 {card ? (
                     <>
-                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden ">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 ">
 
                                 {/* Plant Image */}
                                 <div className="flex justify-center items-center">
@@ -201,7 +201,7 @@ useEffect(() => {
                         </div>
 
                         {/* Additional Info Section */}
-                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8 p-8">
+                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-3 p-8">
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Additional Info</h3>
 
                             {/* Care Tips */}
