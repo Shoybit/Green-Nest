@@ -12,7 +12,7 @@ const MyBookings = () => {
 
     const fetchBookings = async () => {
       try {
-        const res = await fetch("http://localhost:3000/bookings");
+        const res = await fetch("https://greennest-vercel.vercel.app/bookings");
         const data = await res.json();
         setBookings(data);
       } catch (error) {
@@ -39,7 +39,7 @@ const MyBookings = () => {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/bookings/${id}`, {
+        const res = await fetch(`https://greennest-vercel.vercel.app/bookings/${id}`, {
           method: "DELETE",
         });
 

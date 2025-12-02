@@ -35,21 +35,22 @@ useEffect(() => {
     return () => unsubscribe();
 }, []);
 
-    useEffect(() => {
-        const fetchCardDetails = async () => {
-            try {
-                const res = await fetch(`http://localhost:3000/plants/${id}`);
-                const result = await res.json();
-                setCard(result);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
+useEffect(() => {
+    const fetchCardDetails = async () => {
+        try {
+            const res = await fetch(`https://greennest-vercel.vercel.app/plants/${id}`);
+            const result = await res.json();
+            setCard(result);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        if (id) fetchCardDetails();
-    }, [id]);
+    if (id) fetchCardDetails();
+}, [id]);
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -69,7 +70,7 @@ useEffect(() => {
         }
 
         const bookingInfo = {
-            plantId: card.id,
+            plantId: card._id,
             plantName: card.plantName,
             userName: formData.name,
              plantImage: card.image, 
@@ -78,7 +79,7 @@ useEffect(() => {
         };
 
         try {
-            const res = await fetch("http://localhost:3000/bookings", {
+            const res = await fetch("https://greennest-vercel.vercel.app/bookings", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

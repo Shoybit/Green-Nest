@@ -7,8 +7,8 @@ import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import CardDetails from "../Pages/CardDetails";
 import ProtectedRoute from "../Provider/ProtectedRoute";
-import AllBookings from "../Components/MyBookings";
 import MyBookings from "../Components/MyBookings";
+import Error from "../Pages/Eroor";
 
 export const router = createBrowserRouter([
   {
@@ -18,12 +18,12 @@ export const router = createBrowserRouter([
       { 
         index: true, 
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
+        loader: () => fetch("https://greennest-vercel.vercel.app/plants").then(res => res.json())
       },
       { 
         path: 'plants',
         element: <Plants />,
-        loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
+        loader: () => fetch("https://greennest-vercel.vercel.app/plants").then(res => res.json())
       },
       {
         path: 'myprofile',

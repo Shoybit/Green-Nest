@@ -56,10 +56,10 @@ const Footer = () => {
         <div className="border-t border-green-600 pt-8 flex flex-col md:flex-row items-center justify-between">
           <h3 className="text-xl font-semibold mb-4 md:mb-0">Contact Me</h3>
           <div className="flex items-center gap-6 mb-4 md:mb-0">
-            <a href="#" className="hover:text-green-200 transition-colors text-2xl"><FaFacebookF /></a>
-            <a href="#" className="hover:text-green-200 transition-colors text-2xl"><FaInstagram /></a>
-            <a href="#" className="hover:text-green-200 transition-colors text-2xl"><FaPinterestP /></a>
-           <a href="#" className="hover:text-green-200 transition-colors text-2xl"><FaXTwitter /></a>
+            <a href="https://www.facebook.com/shoyaibchowdhury.07" className="hover:text-green-200 transition-colors text-2xl"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/shoyaib_chowdhury0/" className="hover:text-green-200 transition-colors text-2xl"><FaInstagram /></a>
+            <a href="https://www.pinterest.com/" className="hover:text-green-200 transition-colors text-2xl"><FaPinterestP /></a>
+           <a href="https://x.com/shoybit07" className="hover:text-green-200 transition-colors text-2xl"><FaXTwitter /></a>
 
           </div>
           <p className="text-gray-400 text-sm">&copy; 2025 GreenNest. All rights reserved.</p>
