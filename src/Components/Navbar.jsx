@@ -63,11 +63,19 @@ const Navbar = () => {
                             </li>
                             {user && (
                                 <li>
+                                    <ActiveLink to="/Mybooking">
+                                       My Booking
+                                    </ActiveLink>
+                                </li>
+                            )}
+                            {user && (
+                                <li>
                                     <ActiveLink to="/myprofile">
                                        My Profile
                                     </ActiveLink>
                                 </li>
                             )}
+
                             
 
                         </ul>
@@ -99,6 +107,13 @@ const Navbar = () => {
                                     Plants
                                 </ActiveLink>
                             </li>
+                             {user && (
+                                <li>
+                                    <ActiveLink to="/Mybooking" className="py-1 px-2 text-[18px] font-semibold">
+                                       My Booking
+                                    </ActiveLink>
+                                </li>
+                            )}
                             {user && (
                                 <li>
                                     <ActiveLink to="/myprofile" className="py-1 px-2 text-[18px] font-semibold">
@@ -106,6 +121,7 @@ const Navbar = () => {
                                     </ActiveLink>
                                 </li>
                             )}
+                            
                         </ul>
                     </div>
 

@@ -7,6 +7,8 @@ import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import CardDetails from "../Pages/CardDetails";
 import ProtectedRoute from "../Provider/ProtectedRoute";
+import AllBookings from "../Components/MyBookings";
+import MyBookings from "../Components/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <MyProfile />
+          </ProtectedRoute>
+        ) 
+      },
+      {
+        path: 'Mybooking',
+        element: (
+          <ProtectedRoute>
+            <MyBookings/>
           </ProtectedRoute>
         ) 
       },
