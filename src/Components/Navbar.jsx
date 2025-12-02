@@ -87,21 +87,21 @@ const Navbar = () => {
 
                 
                 <div className="navbar-end">
-                    <div className="hidden lg:flex">
-                        <ul className="menu menu-horizontal menu-sm">
+                    <div className="hidden lg:flex ">
+                        <ul className="menu menu-horizontal menu-sm gap-5">
                             <li>
-                                <ActiveLink to="/" className="py-1 px-2 text-[16px] font-semibold">
+                                <ActiveLink to="/" className="py-1 px-2 text-[18px] font-semibold">
                                     Home
                                 </ActiveLink>
                             </li>
                             <li>
-                                <ActiveLink to="/plants" className="py-1 px-2 text-[16px] font-semibold">
+                                <ActiveLink to="/plants" className="py-1 px-2 text-[18px] font-semibold">
                                     Plants
                                 </ActiveLink>
                             </li>
                             {user && (
                                 <li>
-                                    <ActiveLink to="/myprofile" className="py-1 px-2 text-[16px] font-semibold">
+                                    <ActiveLink to="/myprofile" className="py-1 px-2 text-[18px] font-semibold">
                                         My Profile
                                     </ActiveLink>
                                 </li>

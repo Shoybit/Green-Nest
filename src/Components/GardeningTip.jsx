@@ -3,7 +3,7 @@ import tipImg from "../assets/imgi_73_front-view-potted-plant-wooden-surface_140
 
 const GardeningTip = () => {
   return (
-    <div className="max-w-5xl mx-auto mt-105 bg-white rounded-lg p-6 shadow-md mb-20 border border-gray-300/40">
+    <div className="max-w-5xl mx-auto mt-12 bg-white rounded-lg p-6 shadow-md mb-20 border border-gray-300/40">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
          Gardening Tip of the Day
       </h2>

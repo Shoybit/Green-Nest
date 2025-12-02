@@ -1,36 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
-import { useLoaderData, useParams } from 'react-router-dom'; 
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import PageLoader from '../Components/PageLoader'; 
+import PageLoader from '../Components/PageLoader';
 
 const CardDetails = () => {
-    const data = useLoaderData();
+
     const { id } = useParams(); 
     const [card, setCard] = useState(null); 
+    const [loading, setLoading] = useState(true);
+
     const [formData, setFormData] = useState({
         name: '',
         email: ''
     });
-    const [loading, setLoading] = useState(true); 
-
 
     useEffect(() => {
-    document.title = "Plant Details | Green-Nest";
-  }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 1000);
-        return () => clearTimeout(timer);
+        document.title = "Plant Details | Green-Nest";
     }, []);
 
+    // ✅ FIXED: Fetch using id (_id from MongoDB)
     useEffect(() => {
-        if (data && id) {
-            const cardDetails = data.find((singleCard) => singleCard.id == id);
-            setCard(cardDetails);
+        const fetchCardDetails = async () => {
+            try {
+                const res = await fetch(`http://localhost:3000/plants/${id}`);
+                const result = await res.json();
+                setCard(result);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) {
+            fetchCardDetails();
         }
-    }, [data, id]);
+    }, [id]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -42,12 +49,12 @@ const CardDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         toast.success('Booking successfully!', {
             position: "top-right",
             autoClose: 3000,
         });
-        
+
         setFormData({
             name: '',
             email: ''
@@ -62,10 +69,12 @@ const CardDetails = () => {
         <div className="min-h-screen bg-[#f0fdf4] py-8">
             <div className="max-w-6xl mx-auto px-4">
                 <h1 className="text-3xl font-bold text-center mb-8">Plant Details</h1>
-                
+
                 {card ? (
                     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                            
+                            {/* Plant Image */}
                             <div className="flex justify-center items-center">
                                 <img 
                                     src={card.image} 
@@ -74,13 +83,14 @@ const CardDetails = () => {
                                 />
                             </div>
 
+                            {/* Plant Info */}
                             <div className="space-y-6">
                                 <div>
                                     <h2 className="text-3xl font-bold text-gray-800 mb-2">
                                         {card.plantName}
                                     </h2>
                                     <p className="text-gray-600 leading-relaxed">
-                                        {card.description || "A beautiful plant that adds natural beauty to your space."}
+                                        {card.description}
                                     </p>
                                 </div>
 
@@ -89,22 +99,26 @@ const CardDetails = () => {
                                         <div className="text-green-600 font-semibold">Category</div>
                                         <div className="text-gray-800">{card.category}</div>
                                     </div>
+
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <div className="text-blue-600 font-semibold">Price</div>
                                         <div className="text-gray-800 font-bold text-xl">${card.price}</div>
                                     </div>
+
                                     <div className="bg-yellow-50 p-4 rounded-lg">
                                         <div className="text-yellow-600 font-semibold">Rating</div>
                                         <div className="text-gray-800 flex items-center">
                                             <FaStar className="text-yellow-400 mr-1" /> {card.rating}
                                         </div>
                                     </div>
+
                                     <div className="bg-purple-50 p-4 rounded-lg">
                                         <div className="text-purple-600 font-semibold">Available Stock</div>
                                         <div className="text-gray-800">{card.availableStock}</div>
                                     </div>
                                 </div>
 
+                                {/* Booking Form */}
                                 <div className="border-t pt-6">
                                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Book For Consultation</h3>
                                     <form onSubmit={handleSubmit} className="space-y-4">

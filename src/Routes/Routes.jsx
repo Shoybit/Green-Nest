@@ -7,7 +7,6 @@ import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import CardDetails from "../Pages/CardDetails";
 import ProtectedRoute from "../Provider/ProtectedRoute";
-import Eroor from "../Pages/Eroor";
 
 export const router = createBrowserRouter([
   {
@@ -15,41 +14,43 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { 
-      index: true, 
-      element: <Home />,
-      loader: () => fetch('../Plant.data.json')
-     },
+        index: true, 
+        element: <Home />,
+        loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
+      },
       { 
         path: 'plants',
         element: <Plants />,
-                loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
-
-       },
+        loader: () => fetch("http://localhost:3000/plants").then(res => res.json())
+      },
       {
         path: 'myprofile',
-        element: <MyProfile /> 
+        element: (
+          <ProtectedRoute>
+            <MyProfile />
+          </ProtectedRoute>
+        ) 
       },
       { 
-      path: 'login',
-      element: <Login />
-     },
+        path: 'login',
+        element: <Login />
+      },
       { 
-      path: 'signup',
-      element: <Signup />
-     },
+        path: 'signup',
+        element: <Signup />
+      },
       {
-      path: 'card-details/:id',
-      element: (
-      <ProtectedRoute>
-      <CardDetails />
-      </ProtectedRoute>
-      ),
-      loader: () => fetch('../Plant.data.json')
+        path: 'card-details/:id',
+        element: (
+          <ProtectedRoute>
+            <CardDetails />
+          </ProtectedRoute>
+        ),
       },
-      { path: '*',
-        element: <Eroor></Eroor>
-
-       }
+      { 
+        path: '*',
+        element: <Error />
+      }
     ]
   }
 ]);
