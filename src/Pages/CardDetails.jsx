@@ -72,6 +72,7 @@ useEffect(() => {
             plantId: card.id,
             plantName: card.plantName,
             userName: formData.name,
+             plantImage: card.image, 
             userEmail: formData.email,
             date: new Date().toISOString()
         };
