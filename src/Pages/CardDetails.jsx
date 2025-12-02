@@ -8,11 +8,11 @@ import { auth } from '../firebase/firebase.config';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const CardDetails = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const navigate = useNavigate();
-    const [card, setCard] = useState(null); 
+    const [card, setCard] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(null);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -49,7 +49,8 @@ const CardDetails = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    // 🔥 UPDATED handleSubmit — Bookings will save in DB
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!user) {
@@ -61,12 +62,38 @@ const CardDetails = () => {
             return;
         }
 
-        toast.success('Booking successfully!', {
-            position: "top-right",
-            autoClose: 3000,
-        });
+        const bookingInfo = {
+            plantId: card.id,
+            plantName: card.plantName,
+            userName: formData.name,
+            userEmail: formData.email,
+            date: new Date().toISOString()
+        };
 
-        setFormData({ name: '', email: '' });
+        try {
+            const res = await fetch("http://localhost:3000/bookings", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(bookingInfo)
+            });
+
+            if (res.ok) {
+                toast.success('Booking successfully saved!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+
+                setFormData({ name: '', email: '' });
+            } else {
+                toast.error('Failed to save booking.');
+            }
+
+        } catch (error) {
+            console.error(error);
+            toast.error('Something went wrong!');
+        }
     };
 
     if (loading) return <PageLoader />;
@@ -80,11 +107,12 @@ const CardDetails = () => {
                     <>
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+
                                 {/* Plant Image */}
                                 <div className="flex justify-center items-center">
-                                    <img 
-                                        src={card.image} 
-                                        alt={card.plantName} 
+                                    <img
+                                        src={card.image}
+                                        alt={card.plantName}
                                         className="w-full h-full max-w-md object-cover rounded-lg shadow-md"
                                     />
                                 </div>
@@ -152,7 +180,7 @@ const CardDetails = () => {
                                                 />
                                             </div>
 
-                                            <button 
+                                            <button
                                                 type="submit"
                                                 className="w-full bg-green-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-600 transition-colors duration-200"
                                             >
@@ -164,10 +192,11 @@ const CardDetails = () => {
                             </div>
                         </div>
 
-                        {/* New Section for Care Tips, Benefits, Placement Suggestions */}
+                        {/* Additional Info Section */}
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8 p-8">
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Additional Info</h3>
 
+                            {/* Care Tips */}
                             {card.careTips && (
                                 <div className="mb-4">
                                     <h4 className="text-xl font-semibold text-green-700 mb-2">Care Tips</h4>
@@ -179,6 +208,7 @@ const CardDetails = () => {
                                 </div>
                             )}
 
+                            {/* Benefits */}
                             {card.benefits && (
                                 <div className="mb-4">
                                     <h4 className="text-xl font-semibold text-blue-700 mb-2">Benefits</h4>
@@ -190,6 +220,7 @@ const CardDetails = () => {
                                 </div>
                             )}
 
+                            {/* Placement */}
                             {card.placementSuggestions && (
                                 <div className="mb-4">
                                     <h4 className="text-xl font-semibold text-purple-700 mb-2">Placement Suggestions</h4>
