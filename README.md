@@ -1,7 +1,6 @@
 # Green-Nest 
 
-A modern, responsive, and eco‑friendly web application built using **React**, **Tailwind CSS**, and **Firebase** — promoting sustainable products and green lifestyle awareness.  
-
+GreenNest is a modern, responsive and eco‑friendly web application built with React, Tailwind CSS, and Firebase, aimed at promoting sustainable products and encouraging a greener lifestyle. It offers a clean UI/UX, smooth navigation, product sections and eco‑friendly content, secure authentication, toast notifications, and intuitive features like swipers/sliders — all to help users explore sustainable choices and make environmentally conscious decisions.
 **Live Demo:** [https://remarkable-torte-c4c438.netlify.app/](https://remarkable-torte-c4c438.netlify.app/)  
 **Server:** [Green-Nest Server](https://github.com/Shoybit/Green-Nest-Server)
 
